@@ -1,0 +1,895 @@
+<!doctype html>
+<html lang="id">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVEED RUN Apparel — Performance Running Gear</title>
+  
+  <!-- Tailwind CSS & Lucide Icons -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --ink: #0b1014;
+      --slate: #141c22;
+      --line: rgba(255, 255, 255, 0.15);
+      --volt: #d9ff36;
+      --blue: #2da6ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      width: 100%;
+      overflow-x: hidden;
+      background: var(--ink);
+      color: #ffffff;
+      font-family: "Fira Sans", sans-serif;
+    }
+
+    /* Decorative grid texture */
+    .grid-noise {
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 34px 34px;
+    }
+
+    /* Brand accent slash beside SVEED logo */
+    .wordmark-slash {
+      display: inline-block;
+      width: 10px;
+      height: 25px;
+      margin-right: 7px;
+      vertical-align: -5px;
+      transform: skewX(-22deg);
+      background: var(--volt);
+    }
+
+    /* Desktop and mobile category navigation buttons */
+    .nav-link {
+      border: 0;
+      background: transparent;
+      color: #c4ccd0;
+      cursor: pointer;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--volt);
+    }
+
+    .nav-link:focus-visible,
+    .icon-button:focus-visible,
+    .cta-button:focus-visible,
+    .outline-button:focus-visible,
+    .add-button:focus-visible,
+    .view-dot:focus-visible,
+    .social-link:focus-visible,
+    .search-field:focus-visible {
+      outline: 3px solid var(--volt);
+      outline-offset: 3px;
+    }
+
+    /* Header icon buttons */
+    .icon-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: #ffffff;
+      cursor: pointer;
+      transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+    }
+
+    .icon-button:hover {
+      border-color: var(--volt);
+      background: var(--volt);
+      color: var(--ink);
+    }
+
+    /* Angled bottom edge of hero banner */
+    .hero-cut {
+      clip-path: polygon(0 0, 100% 0, 100% 87%, 68% 100%, 0 92%);
+    }
+
+    .hero-image-shade {
+      background: linear-gradient(
+        90deg,
+        rgba(5, 8, 10, 0.96) 1%,
+        rgba(5, 8, 10, 0.78) 35%,
+        rgba(5, 8, 10, 0.12) 72%,
+        rgba(5, 8, 10, 0.46) 100%
+      );
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: var(--volt);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      display: inline-block;
+      width: 24px;
+      height: 2px;
+      background: currentColor;
+      content: "";
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      border: 0;
+      padding: 1.05rem 1.35rem;
+      background: var(--volt);
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 0.86rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      line-height: 1;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      background: #edff89;
+    }
+
+    .outline-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      padding: 1rem 1.2rem;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .outline-button:hover {
+      border-color: var(--volt);
+      color: var(--volt);
+    }
+
+    .product-card {
+      overflow: hidden;
+      background: #f2f4f2;
+      color: var(--ink);
+      transition: transform 0.25s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-media {
+      position: relative;
+      aspect-ratio: 4 / 4.2;
+      overflow: hidden;
+      background: #dce1df;
+    }
+
+    .product-image {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.45s ease;
+    }
+
+    .product-image.is-visible {
+      z-index: 2;
+      opacity: 1;
+    }
+
+    .product-card:hover .product-image.is-visible {
+      transform: scale(1.04);
+    }
+
+    .view-dot {
+      width: 25px;
+      height: 4px;
+      border: 0;
+      padding: 0;
+      background: rgba(11, 16, 20, 0.25);
+      cursor: pointer;
+      transition: width 0.2s ease, background 0.2s ease;
+    }
+
+    .view-dot.active {
+      width: 38px;
+      background: var(--ink);
+    }
+
+    .swatch {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      border: 1px solid rgba(0, 0, 0, 0.22);
+      border-radius: 999px;
+    }
+
+    .add-button {
+      border: 0;
+      background: var(--ink);
+      color: #ffffff;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .add-button:hover {
+      transform: translateY(-2px);
+      background: #197dcc;
+    }
+
+    .look-card {
+      position: relative;
+      min-height: 285px;
+      overflow: hidden;
+    }
+
+    .look-card img {
+      transition: transform 0.5s ease;
+    }
+
+    .look-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .look-card::after {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(4, 8, 10, 0.85), transparent 60%);
+      content: "";
+      pointer-events: none;
+    }
+
+    .benefit-number {
+      color: #0b1014;
+      font-size: 3.2rem;
+      font-weight: 900;
+      letter-spacing: -0.12em;
+      line-height: 0.8;
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    @media (max-width: 900px) {
+      .desktop-nav {
+        display: none;
+      }
+
+      .mobile-toggle {
+        display: inline-flex;
+      }
+    }
+
+    @media (min-width: 901px) {
+      .mobile-toggle {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-cut {
+        clip-path: none;
+      }
+
+      .hero-content {
+        min-height: 520px;
+      }
+    }
+  </style>
+ </head>
+ <body data-template-id="__page-root">
+ 
+  <!-- TOP PROMOTION BAR -->
+  <header>
+   <div data-template-id="announcement-bar" class="canva-banner bg-[#d9ff36] px-4 py-2 text-center text-black">
+    <p data-template-id="announcement-text" class="canva-text m-0 text-[11px] font-extrabold uppercase tracking-[0.14em]">
+      ⚡ GRATIS ONGKIR SE-INDONESIA MIN. PEMBELIAN 2 PCS | KODE PROMO: RUNFREE
+    </p>
+   </div>
+
+   <!-- MAIN NAVIGATION -->
+   <div class="grid-noise border-b border-white/10 bg-[#0b1014]">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 lg:px-8">
+      <a href="#top" class="flex shrink-0 items-center text-white no-underline" aria-label="SVEED RUN home"> 
+        <span class="text-xl font-black uppercase tracking-[-0.08em]"> 
+          <span class="wordmark-slash"></span>S V E E D 
+        </span> 
+      </a>
+      
+     <nav aria-label="Navigasi kategori produk" class="desktop-nav flex items-center gap-5 xl:gap-7">
+        <button type="button" class="nav-link" data-category="men">Pria</button> 
+        <button type="button" class="nav-link" data-category="women">Wanita</button> 
+        <button type="button" class="nav-link" data-category="singlets">Singlet</button> 
+        <button type="button" class="nav-link" data-category="long-sleeve">Lengan Panjang</button> 
+        <button type="button" class="nav-link active" data-category="all">Race Day</button>
+     </nav>
+     
+     <div class="flex items-center gap-2">
+      <label class="relative flex min-w-0 flex-1 lg:flex-none" for="product-search"> 
+        <span class="sr-only">Cari produk</span> 
+        <i data-lucide="search" class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"></i> 
+        <input id="product-search" data-template-id="search-input" placeholder="Cari jersey..." class="canva-input search-field w-full min-w-0 border border-white/15 bg-white/5 py-2 pl-9 pr-3 text-sm text-white outline-none transition focus:border-[#d9ff36] sm:w-40 xl:w-44" type="search" autocomplete="off" enterkeyhint="search" aria-label="Cari produk"> 
+      </label> 
+      <button type="button" class="icon-button" aria-label="Akun pelanggan"> 
+        <i data-lucide="user-round" class="h-[18px] w-[18px]"></i> 
+      </button> 
+      <button id="cart-button" type="button" class="icon-button relative" aria-label="Buka keranjang belanja" aria-controls="cart-panel" aria-expanded="false"> 
+        <i data-lucide="shopping-bag" class="h-[18px] w-[18px]"></i> 
+        <span id="cart-count" class="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-[#2da6ff] px-1 text-[10px] font-black text-white" aria-live="polite">0</span> 
+      </button> 
+      <button id="menu-toggle" type="button" class="icon-button mobile-toggle" aria-label="Buka navigasi" aria-expanded="false"> 
+        <i data-lucide="menu" class="h-[18px] w-[18px]"></i> 
+      </button>
+     </div>
+    </div>
+    
+    <!-- MOBILE CATEGORY MENU -->
+    <nav id="mobile-menu" class="mobile-menu flex-col border-t border-white/10 px-6 py-5" aria-label="Navigasi kategori mobile">
+      <button type="button" class="nav-link py-2 text-left" data-category="men">Pria</button> 
+      <button type="button" class="nav-link py-2 text-left" data-category="women">Wanita</button> 
+      <button type="button" class="nav-link py-2 text-left" data-category="singlets">Singlet</button> 
+      <button type="button" class="nav-link py-2 text-left" data-category="long-sleeve">Lengan Panjang</button> 
+      <button type="button" class="nav-link py-2 text-left" data-category="all">Koleksi Race Day</button>
+    </nav>
+   </div>
+  </header>
+
+  <main id="top">
+   <!-- HERO SECTION -->
+   <section data-template-id="hero-section" class="canva-section hero-cut relative min-h-[620px] overflow-hidden">
+    <img data-template-id="hero-image" src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1600&q=80" alt="SVEED Runners in Action" class="canva-image absolute inset-0 h-full w-full object-cover object-center" loading="lazy">
+    <div class="hero-image-shade absolute inset-0"></div>
+    <div class="grid-noise absolute inset-0 opacity-30"></div>
+    <div class="hero-content relative mx-auto flex min-h-[620px] max-w-7xl items-center px-5 py-24 lg:px-8">
+     <div class="max-w-2xl">
+      <p data-template-id="hero-eyebrow" class="canva-text eyebrow">KOLEKSI MARATHON 2026</p>
+      <h1 data-template-id="hero-title" class="canva-text mt-5 max-w-xl text-4xl md:text-6xl font-black uppercase leading-[0.95] tracking-[-0.05em] text-white">
+        BREAK YOUR LIMIT IN ULTIMATE COMFORT
+      </h1>
+      <p data-template-id="hero-description" class="canva-text mt-6 max-w-lg leading-relaxed text-slate-200">
+        Didesain khusus untuk pelari yang mengejar Personal Best (PB). Bahan ultra-ringan, sirkulasi udara maksimal, dan cepat kering di setiap kilometer.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <button id="shop-cta" data-template-id="hero-cta" type="button" class="canva-button cta-button">BELANJA KOLEKSI LARI</button> 
+        <a href="#lookbook" data-template-id="hero-lookbook-link" class="canva-button outline-button">LIHAT LOOKBOOK</a>
+      </div>
+     </div>
+    </div>
+    <div class="absolute bottom-14 right-5 hidden items-center gap-3 lg:flex lg:right-10">
+      <span class="h-px w-14 bg-[#d9ff36]"></span> 
+      <span data-template-id="hero-series-label" class="canva-text text-[10px] font-bold uppercase tracking-[0.2em] text-white/80">PRO-RUNNING SERIES</span>
+    </div>
+   </section>
+
+   <!-- PRODUCT CATALOGUE -->
+   <section id="products" data-template-id="products-section" class="canva-section bg-[#e8edf0] px-5 py-20 text-[#0b1014] lg:px-8">
+    <div class="mx-auto max-w-7xl">
+     <div class="flex flex-col justify-between gap-6 border-b border-black/15 pb-8 md:flex-row md:items-end">
+      <div>
+       <p data-template-id="products-eyebrow" class="canva-text eyebrow !text-[#197dcc]">RACE READY GEAR</p>
+       <h2 data-template-id="products-title" class="canva-text mt-3 text-3xl md:text-4xl font-black uppercase leading-none tracking-[-0.05em]">JERSEY TERFAVORIT</h2>
+      </div>
+      <p data-template-id="products-description" class="canva-text max-w-sm text-sm leading-relaxed text-slate-600">
+        Dibuat menggunakan serat mikro aerodinamis yang menyerap keringat seketika dan mencegah kelembapan berlebih.
+      </p>
+     </div>
+     
+     <p id="no-results" data-template-id="no-results-text" class="canva-text hidden py-16 text-center font-semibold text-slate-600">
+        Produk yang Anda cari tidak ditemukan.
+     </p>
+     
+     <div id="product-grid" class="mt-9 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      
+      <!-- PRODUCT 1 -->
+      <article class="product-card product-item" data-category="men singlets">
+       <div class="product-media">
+        <img data-template-id="p1-img-front" src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=600&q=80" alt="Apex Aero Singlet Depan" class="canva-image product-image is-visible" loading="lazy"> 
+        <img data-template-id="p1-img-back" src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" alt="Apex Aero Singlet Belakang" class="canva-image product-image" loading="lazy"> 
+        <img data-template-id="p1-img-detail" src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=600&q=80" alt="Apex Aero Singlet Detail" class="canva-image product-image" loading="lazy"> 
+        <span data-template-id="p1-badge" class="canva-tag absolute left-3 top-3 z-10 bg-[#d9ff36] px-2 py-1 text-[9px] font-black tracking-[0.12em] text-black">QUICK-DRY</span>
+        <div class="absolute bottom-3 left-3 z-20 flex gap-1">
+          <button type="button" class="view-dot active" data-view="front" aria-label="Lihat tampilan depan produk 1"></button> 
+          <button type="button" class="view-dot" data-view="back" aria-label="Lihat tampilan belakang produk 1"></button> 
+          <button type="button" class="view-dot" data-view="detail" aria-label="Lihat detail bahan produk 1"></button>
+        </div>
+       </div>
+       <div class="p-4">
+        <h3 data-template-id="p1-name" class="canva-text text-sm md:text-base font-extrabold uppercase leading-tight">Apex Aero Singlet</h3>
+        <div class="mt-2 flex items-center gap-2">
+          <span data-template-id="p1-price-old" class="canva-text text-xs text-slate-500 line-through">Rp 349.000</span> 
+          <span data-template-id="p1-price" class="canva-text font-black text-sm md:text-base">Rp 279.000</span>
+        </div>
+        <div class="mt-3 flex gap-1.5" aria-label="Pilihan warna: hitam, volt, putih">
+          <span class="swatch bg-[#111111]"></span> 
+          <span class="swatch bg-[#d9ff36]"></span> 
+          <span class="swatch bg-[#ecedf1]"></span>
+        </div>
+        <button data-template-id="p1-add-btn" type="button" class="canva-button add-button mt-4 flex w-full items-center justify-center px-3 py-3 text-xs font-black uppercase tracking-[0.1em]">
+          TAMBAH KE KERANJANG
+        </button> 
+        <span data-template-id="p1-added-msg" class="canva-text added-message mt-3 hidden text-center text-xs font-bold text-[#197dcc]" aria-live="polite">Berhasil Ditambahkan!</span>
+       </div>
+      </article>
+
+      <!-- PRODUCT 2 -->
+      <article class="product-card product-item" data-category="women long-sleeve">
+       <div class="product-media">
+        <img data-template-id="p2-img-front" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80" alt="Flux Tempo Long Sleeve Depan" class="canva-image product-image is-visible" loading="lazy"> 
+        <img data-template-id="p2-img-back" src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80" alt="Flux Tempo Long Sleeve Belakang" class="canva-image product-image" loading="lazy"> 
+        <img data-template-id="p2-img-detail" src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=600&q=80" alt="Flux Tempo Long Sleeve Detail" class="canva-image product-image" loading="lazy"> 
+        <span data-template-id="p2-badge" class="canva-tag absolute left-3 top-3 z-10 bg-[#2da6ff] px-2 py-1 text-[9px] font-black tracking-[0.12em] text-white">ULTRA-LIGHT</span>
+        <div class="absolute bottom-3 left-3 z-20 flex gap-1">
+          <button type="button" class="view-dot active" data-view="front" aria-label="Lihat tampilan depan produk 2"></button> 
+          <button type="button" class="view-dot" data-view="back" aria-label="Lihat tampilan belakang produk 2"></button> 
+          <button type="button" class="view-dot" data-view="detail" aria-label="Lihat detail bahan produk 2"></button>
+        </div>
+       </div>
+       <div class="p-4">
+        <h3 data-template-id="p2-name" class="canva-text text-sm md:text-base font-extrabold uppercase leading-tight">Flux Tempo Long Sleeve</h3>
+        <div class="mt-2 flex items-center gap-2">
+          <span data-template-id="p2-price-old" class="canva-text text-xs text-slate-500 line-through">Rp 399.000</span> 
+          <span data-template-id="p2-price" class="canva-text font-black text-sm md:text-base">Rp 319.000</span>
+        </div>
+        <div class="mt-3 flex gap-1.5" aria-label="Pilihan warna: biru, hitam, putih">
+          <span class="swatch bg-[#1479bd]"></span> 
+          <span class="swatch bg-[#101820]"></span> 
+          <span class="swatch bg-[#f1f4f5]"></span>
+        </div>
+        <button data-template-id="p2-add-btn" type="button" class="canva-button add-button mt-4 flex w-full items-center justify-center px-3 py-3 text-xs font-black uppercase tracking-[0.1em]">
+          TAMBAH KE KERANJANG
+        </button> 
+        <span data-template-id="p2-added-msg" class="canva-text added-message mt-3 hidden text-center text-xs font-bold text-[#197dcc]" aria-live="polite">Berhasil Ditambahkan!</span>
+       </div>
+      </article>
+
+      <!-- PRODUCT 3 -->
+      <article class="product-card product-item" data-category="men women">
+       <div class="product-media">
+        <img data-template-id="p3-img-front" src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" alt="Reflect Pace Jersey Depan" class="canva-image product-image is-visible" loading="lazy"> 
+        <img data-template-id="p3-img-back" src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" alt="Reflect Pace Jersey Belakang" class="canva-image product-image" loading="lazy"> 
+        <img data-template-id="p3-img-detail" src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=600&q=80" alt="Reflect Pace Jersey Detail" class="canva-image product-image" loading="lazy"> 
+        <span data-template-id="p3-badge" class="canva-tag absolute left-3 top-3 z-10 bg-[#0b1014] px-2 py-1 text-[9px] font-black tracking-[0.12em] text-white">NIGHT-REFLECTIVE</span>
+        <div class="absolute bottom-3 left-3 z-20 flex gap-1">
+          <button type="button" class="view-dot active" data-view="front" aria-label="Lihat tampilan depan produk 3"></button> 
+          <button type="button" class="view-dot" data-view="back" aria-label="Lihat tampilan belakang produk 3"></button> 
+          <button type="button" class="view-dot" data-view="detail" aria-label="Lihat detail bahan produk 3"></button>
+        </div>
+       </div>
+       <div class="p-4">
+        <h3 data-template-id="p3-name" class="canva-text text-sm md:text-base font-extrabold uppercase leading-tight">Reflect Pace Jersey</h3>
+        <div class="mt-2 flex items-center gap-2">
+          <span data-template-id="p3-price-old" class="canva-text text-xs text-slate-500 line-through">Rp 379.000</span> 
+          <span data-template-id="p3-price" class="canva-text font-black text-sm md:text-base">Rp 299.000</span>
+        </div>
+        <div class="mt-3 flex gap-1.5" aria-label="Pilihan warna: putih, abu-abu, hitam">
+          <span class="swatch bg-[#f4f6f4]"></span> 
+          <span class="swatch bg-[#aeb8c0]"></span> 
+          <span class="swatch bg-[#19222a]"></span>
+        </div>
+        <button data-template-id="p3-add-btn" type="button" class="canva-button add-button mt-4 flex w-full items-center justify-center px-3 py-3 text-xs font-black uppercase tracking-[0.1em]">
+          TAMBAH KE KERANJANG
+        </button> 
+        <span data-template-id="p3-added-msg" class="canva-text added-message mt-3 hidden text-center text-xs font-bold text-[#197dcc]" aria-live="polite">Berhasil Ditambahkan!</span>
+       </div>
+      </article>
+
+      <!-- PRODUCT 4 -->
+      <article class="product-card product-item" data-category="men women singlets">
+       <div class="product-media">
+        <img data-template-id="p4-img-front" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80" alt="Bolt Race Singlet Depan" class="canva-image product-image is-visible" loading="lazy"> 
+        <img data-template-id="p4-img-back" src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" alt="Bolt Race Singlet Belakang" class="canva-image product-image" loading="lazy"> 
+        <img data-template-id="p4-img-detail" src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=600&q=80" alt="Bolt Race Singlet Detail" class="canva-image product-image" loading="lazy"> 
+        <span data-template-id="p4-badge" class="canva-tag absolute left-3 top-3 z-10 bg-[#d9ff36] px-2 py-1 text-[9px] font-black tracking-[0.12em] text-black">BEST SELLER</span>
+        <div class="absolute bottom-3 left-3 z-20 flex gap-1">
+          <button type="button" class="view-dot active" data-view="front" aria-label="Lihat tampilan depan produk 4"></button> 
+          <button type="button" class="view-dot" data-view="back" aria-label="Lihat tampilan belakang produk 4"></button> 
+          <button type="button" class="view-dot" data-view="detail" aria-label="Lihat detail bahan produk 4"></button>
+        </div>
+       </div>
+       <div class="p-4">
+        <h3 data-template-id="p4-name" class="canva-text text-sm md:text-base font-extrabold uppercase leading-tight">Bolt Race Singlet</h3>
+        <div class="mt-2 flex items-center gap-2">
+          <span data-template-id="p4-price-old" class="canva-text text-xs text-slate-500 line-through">Rp 329.000</span> 
+          <span data-template-id="p4-price" class="canva-text font-black text-sm md:text-base">Rp 259.000</span>
+        </div>
+        <div class="mt-3 flex gap-1.5" aria-label="Pilihan warna: volt, jingga, hitam">
+          <span class="swatch bg-[#d9ff36]"></span> 
+          <span class="swatch bg-[#ee5f37]"></span> 
+          <span class="swatch bg-[#0b1014]"></span>
+        </div>
+        <button data-template-id="p4-add-btn" type="button" class="canva-button add-button mt-4 flex w-full items-center justify-center px-3 py-3 text-xs font-black uppercase tracking-[0.1em]">
+          TAMBAH KE KERANJANG
+        </button> 
+        <span data-template-id="p4-added-msg" class="canva-text added-message mt-3 hidden text-center text-xs font-bold text-[#197dcc]" aria-live="polite">Berhasil Ditambahkan!</span>
+       </div>
+      </article>
+
+     </div>
+    </div>
+   </section>
+
+   <!-- LOOKBOOK GALLERY -->
+   <section id="lookbook" data-template-id="lookbook-section" class="canva-section grid-noise bg-[#141c22] px-5 py-20 lg:px-8">
+    <div class="mx-auto max-w-7xl">
+     <div class="mb-9 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+      <div>
+       <p data-template-id="lookbook-eyebrow" class="canva-text eyebrow">RUNNERS IN ACTION</p>
+       <h2 data-template-id="lookbook-title" class="canva-text mt-3 text-3xl md:text-4xl font-black uppercase leading-none tracking-[-0.05em] text-white">KOMUNITAS SVEED</h2>
+      </div>
+      <p data-template-id="lookbook-description" class="canva-text max-w-sm text-sm leading-relaxed text-slate-300">
+        Intip bagaimana para pelari mengenakan koleksi SVEED di lintasan marathon nyata.
+      </p>
+     </div>
+     <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <article class="look-card lg:mt-12">
+        <img data-template-id="look1-image" src="https://images.unsplash.com/photo-1452626038306-9aae5e071dd3?auto=format&fit=crop&w=600&q=80" alt="Morning Run Session" class="canva-image absolute inset-0 h-full w-full object-cover" loading="lazy">
+       <div class="absolute bottom-0 left-0 z-10 p-5">
+        <p data-template-id="look1-label" class="canva-text text-xs font-bold uppercase tracking-[0.16em] text-white/80">MORNING RUN SESSION</p>
+        <a href="#products" data-template-id="look1-link" class="canva-link mt-2 inline-block border-b border-[#d9ff36] pb-1 text-sm font-bold text-white no-underline">Lihat Apparel →</a>
+       </div>
+      </article>
+      
+      <article class="look-card">
+        <img data-template-id="look2-image" src="https://images.unsplash.com/photo-1486218119243-13883505764c?auto=format&fit=crop&w=600&q=80" alt="Jakarta Marathon 2026" class="canva-image absolute inset-0 h-full w-full object-cover" loading="lazy">
+       <div class="absolute bottom-0 left-0 z-10 p-5">
+        <p data-template-id="look2-label" class="canva-text text-xs font-bold uppercase tracking-[0.16em] text-white/80">JAKARTA MARATHON 2026</p>
+        <a href="#products" data-template-id="look2-link" class="canva-link mt-2 inline-block border-b border-[#d9ff36] pb-1 text-sm font-bold text-white no-underline">Lihat Apparel →</a>
+       </div>
+      </article>
+      
+      <article class="look-card lg:mt-12">
+        <img data-template-id="look3-image" src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=600&q=80" alt="Night Track Training" class="canva-image absolute inset-0 h-full w-full object-cover" loading="lazy">
+       <div class="absolute bottom-0 left-0 z-10 p-5">
+        <p data-template-id="look3-label" class="canva-text text-xs font-bold uppercase tracking-[0.16em] text-white/80">NIGHT TRACK TRAINING</p>
+        <a href="#products" data-template-id="look3-link" class="canva-link mt-2 inline-block border-b border-[#d9ff36] pb-1 text-sm font-bold text-white no-underline">Lihat Apparel →</a>
+       </div>
+      </article>
+      
+      <article class="look-card">
+        <img data-template-id="look4-image" src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80" alt="Trail Run Adventure" class="canva-image absolute inset-0 h-full w-full object-cover" loading="lazy">
+       <div class="absolute bottom-0 left-0 z-10 p-5">
+        <p data-template-id="look4-label" class="canva-text text-xs font-bold uppercase tracking-[0.16em] text-white/80">TRAIL RUN ADVENTURE</p>
+        <a href="#products" data-template-id="look4-link" class="canva-link mt-2 inline-block border-b border-[#d9ff36] pb-1 text-sm font-bold text-white no-underline">Lihat Apparel →</a>
+       </div>
+      </article>
+     </div>
+    </div>
+   </section>
+
+   <!-- PERFORMANCE BENEFITS -->
+   <section data-template-id="benefits-section" class="canva-section bg-[#d9ff36] px-5 py-16 text-[#0b1014] lg:px-8">
+    <div class="mx-auto max-w-7xl">
+     <p data-template-id="benefits-heading" class="canva-text text-center text-[11px] font-black uppercase tracking-[0.18em]">MENGAPA MEMILIH SVEED</p>
+     <div class="mt-10 grid divide-y divide-black/15 md:grid-cols-2 md:divide-x md:divide-y-0 lg:grid-cols-4">
+      <article class="px-5 py-5 first:pl-0">
+       <p class="benefit-number">0 1</p>
+       <h3 data-template-id="benefit1-title" class="canva-text mt-5 text-lg font-black uppercase">QUICK-DRY TECH</h3>
+       <p data-template-id="benefit1-desc" class="canva-text mt-2 text-sm leading-relaxed text-black/70">Teknologi serat mikro evaporasi tinggi yang membuat keringat menguap 3x lebih cepat.</p>
+      </article>
+
+      <article class="px-5 py-5">
+       <p class="benefit-number">0 2</p>
+       <h3 data-template-id="benefit2-title" class="canva-text mt-5 text-lg font-black uppercase">ULTRA LIGHTWEIGHT</h3>
+       <p data-template-id="benefit2-desc" class="canva-text mt-2 text-sm leading-relaxed text-black/70">Bobot jersey di bawah 90 gram, terasa sangat ringan serasa tidak memakai atasan.</p>
+      </article>
+
+      <article class="px-5 py-5">
+       <p class="benefit-number">0 3</p>
+       <h3 data-template-id="benefit3-title" class="canva-text mt-5 text-lg font-black uppercase">NIGHT REFLECTIVE</h3>
+       <p data-template-id="benefit3-desc" class="canva-text mt-2 text-sm leading-relaxed text-black/70">Dilengkapi lis & logo pemantul cahaya 3M untuk keamanan maksimal berlari di malam hari.</p>
+      </article>
+
+      <article class="px-5 py-5 last:pr-0">
+       <p class="benefit-number">0 4</p>
+       <h3 data-template-id="benefit4-title" class="canva-text mt-5 text-lg font-black uppercase">GARANSI FIT 100%</h3>
+       <p data-template-id="benefit4-desc" class="canva-text mt-2 text-sm leading-relaxed text-black/70">Kekecilan atau kebesaran? Garansi gratis tukar size dalam 7 hari tanpa syarat rumit.</p>
+      </article>
+     </div>
+    </div>
+   </section>
+  </main>
+
+  <!-- CART SLIDE-OUT PANEL -->
+  <aside id="cart-panel" class="fixed inset-y-0 right-0 z-50 flex w-full max-w-md translate-x-full flex-col bg-[#f2f4f2] text-[#0b1014] shadow-2xl transition-transform duration-300" aria-label="Keranjang belanja" aria-hidden="true">
+   <div class="flex items-center justify-between border-b border-black/10 p-5">
+    <h2 data-template-id="cart-title" class="canva-text font-black uppercase tracking-tight">KERANJANG BELANJA</h2>
+    <button id="cart-close" type="button" class="icon-button !text-[#0b1014]" aria-label="Tutup keranjang"><i data-lucide="x"></i></button>
+   </div>
+   <div id="cart-items" class="flex-1 overflow-y-auto p-5">
+    <p id="cart-empty" data-template-id="cart-empty" class="canva-text text-sm text-slate-500">Keranjang masih kosong.</p>
+   </div>
+   <div class="border-t border-black/10 p-5">
+    <div class="mb-4 flex justify-between font-black">
+      <span data-template-id="cart-total-label" class="canva-text">TOTAL:</span>
+      <span id="cart-total">Rp 0</span>
+    </div>
+    <form id="checkout-form" class="space-y-3">
+      <label data-template-id="checkout-name-label" class="canva-text block text-xs font-bold uppercase" for="checkout-name">NAMA LENGKAP</label>
+      <input id="checkout-name" required class="w-full border border-black/15 bg-white p-3 text-sm text-black" type="text" placeholder="Masukkan nama lengkap">
+      
+      <label data-template-id="checkout-email-label" class="canva-text block text-xs font-bold uppercase" for="checkout-email">EMAIL</label>
+      <input id="checkout-email" required class="w-full border border-black/15 bg-white p-3 text-sm text-black" type="email" placeholder="nama@email.com">
+      
+      <label data-template-id="checkout-phone-label" class="canva-text block text-xs font-bold uppercase" for="checkout-phone">NOMOR WHATSAPP</label>
+      <input id="checkout-phone" required class="w-full border border-black/15 bg-white p-3 text-sm text-black" type="tel" placeholder="081234567890">
+      
+      <label data-template-id="checkout-address-label" class="canva-text block text-xs font-bold uppercase" for="checkout-address">ALAMAT PENGIRIMAN</label>
+      <textarea id="checkout-address" required class="w-full border border-black/15 bg-white p-3 text-sm text-black" rows="2" placeholder="Alamat lengkap tujuan pengiriman"></textarea>
+      
+      <button data-template-id="checkout-submit" type="submit" class="canva-button cta-button w-full">PROSES PESANAN</button>
+      <p data-template-id="checkout-payment-note" class="canva-text text-xs leading-relaxed text-slate-500">Pembayaran dilakukan melalui instruksi resmi setelah pesanan dikonfirmasi. Jangan kirim data kartu melalui formulir ini.</p>
+      <p id="checkout-status" class="text-sm font-semibold" aria-live="polite"></p>
+    </form>
+   </div>
+  </aside>
+  
+  <div id="cart-backdrop" class="fixed inset-0 z-40 hidden bg-black/60"></div>
+
+  <!-- FOOTER -->
+  <footer data-template-id="footer-section" class="canva-footer bg-[#0b1014] border-t border-white/10 px-5 pt-16 lg:px-8">
+   <div class="mx-auto max-w-7xl">
+    <div class="grid gap-10 border-b border-white/15 pb-12 md:grid-cols-2 lg:grid-cols-4">
+     <section>
+      <p data-template-id="footer-brand" class="canva-text text-xl font-black uppercase tracking-[-0.08em] text-white">SVEED RUN APPAREL</p>
+      <p data-template-id="footer-tagline" class="canva-text mt-4 max-w-xs text-sm leading-relaxed text-slate-400">Penyedia perlengkapan lari performa tinggi untuk pelari Indonesia. Engineered for speed and endurance.</p>
+     </section>
+     <section>
+      <h2 data-template-id="footer-cs-heading" class="canva-text text-xs font-black uppercase tracking-[0.15em] text-[#d9ff36]">LAYANAN PELANGGAN</h2>
+      <div class="mt-4 space-y-3 text-sm text-slate-300">
+       <p><strong>WhatsApp CS:</strong> +62 812-3456-7890</p>
+       <p><strong>Email:</strong> support@sveedrun.id</p>
+       <p><strong>Gudang:</strong> Bandung, Jawa Barat</p>
+      </div>
+     </section>
+     <section>
+      <h2 data-template-id="footer-community-heading" class="canva-text text-xs font-black uppercase tracking-[0.15em] text-[#d9ff36]">KOMUNITAS SVEED</h2>
+      <div class="mt-4 flex flex-wrap gap-2">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" data-template-id="footer-link-ig" class="canva-link social-link outline-button !min-h-0 !px-3 !py-2 text-xs">INSTAGRAM</a> 
+        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" data-template-id="footer-link-tiktok" class="canva-link social-link outline-button !min-h-0 !px-3 !py-2 text-xs">TIKTOK</a> 
+        <a href="https://strava.com" target="_blank" rel="noopener noreferrer" data-template-id="footer-link-strava" class="canva-link social-link outline-button !min-h-0 !px-3 !py-2 text-xs">STRAVA CLUB</a>
+      </div>
+     </section>
+     <section>
+      <h2 data-template-id="footer-guide-heading" class="canva-text text-xs font-black uppercase tracking-[0.15em] text-[#d9ff36]">PEMBAYARAN & KURIR</h2>
+      <div class="mt-4 space-y-3 text-sm leading-relaxed text-slate-300">
+       <p data-template-id="footer-payment-info" class="canva-text"><strong>Pembayaran:</strong> QRIS, BCA, Mandiri, GoPay, ShopeePay, COD.</p>
+       <p data-template-id="footer-courier-info" class="canva-text"><strong>Pengiriman:</strong> JNT, JNE, SiCepat, GoSend Instan.</p>
+      </div>
+     </section>
+    </div>
+    <div class="flex flex-col justify-between gap-4 py-7 text-xs text-slate-500 md:flex-row md:items-center">
+     <p data-template-id="footer-copyright" class="canva-text">© 2026 SVEED RUN APPAREL. ALL RIGHTS RESERVED.</p>
+     <div class="flex flex-wrap gap-x-5 gap-y-2">
+      <a href="#top" data-template-id="footer-terms" class="canva-link no-underline transition hover:text-[#d9ff36] text-slate-400">Syarat & Ketentuan</a> 
+      <a href="#products" data-template-id="footer-sizechart" class="canva-link no-underline transition hover:text-[#d9ff36] text-slate-400">Panduan Ukuran (Size Chart)</a> 
+      <a href="#top" data-template-id="footer-privacy" class="canva-link no-underline transition hover:text-[#d9ff36] text-slate-400">Kebijakan Privasi</a>
+     </div>
+    </div>
+   </div>
+  </footer>
+
+  <!-- JAVASCRIPT INTERACTIONS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Create all Lucide SVG icons after the page has loaded.
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+
+      const cartCount = document.getElementById("cart-count");
+      const productItems = Array.from(document.querySelectorAll(".product-item"));
+      const noResults = document.getElementById("no-results");
+      const searchInput = document.getElementById("product-search");
+      const productsSection = document.getElementById("products");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuToggle = document.getElementById("menu-toggle");
+
+      let cartTotal = 0;
+      let activeCategory = "all";
+      const cart = [];
+      if (window.dataSdk) window.dataSdk.init({ onDataChanged() {} });
+      const cartButton = document.getElementById("cart-button");
+      const cartPanel = document.getElementById("cart-panel");
+      const cartClose = document.getElementById("cart-close");
+      const cartBackdrop = document.getElementById("cart-backdrop");
+      const cartItems = document.getElementById("cart-items");
+      const cartTotalEl = document.getElementById("cart-total");
+      const checkoutForm = document.getElementById("checkout-form");
+      const checkoutStatus = document.getElementById("checkout-status");
+
+      function renderCart() {
+        cartTotal = cart.reduce((sum, item) => sum + item.price, 0);
+        if (cartCount) cartCount.textContent = String(cart.length);
+        if (cartTotalEl) cartTotalEl.textContent = `Rp ${cartTotal.toLocaleString("id-ID")}`;
+        if (cartItems) cartItems.querySelectorAll(".cart-line").forEach((el) => el.remove());
+        if (cart.length && cartItems) cart.forEach((item) => { const line = document.createElement("div"); line.className = "cart-line mb-3 flex justify-between border-b border-black/10 pb-3 text-sm"; line.innerHTML = `<span>${item.name}</span><strong>Rp ${item.price.toLocaleString("id-ID")}</strong>`; cartItems.appendChild(line); });
+        const empty = document.getElementById("cart-empty"); if (empty) empty.classList.toggle("hidden", cart.length > 0);
+      }
+
+      function toggleCart(open) { if (!cartPanel) return; cartPanel.classList.toggle("translate-x-full", !open); cartBackdrop.classList.toggle("hidden", !open); cartPanel.setAttribute("aria-hidden", String(!open)); cartButton?.setAttribute("aria-expanded", String(open)); }
+      cartButton?.addEventListener("click", () => toggleCart(true));
+      cartClose?.addEventListener("click", () => toggleCart(false));
+      cartBackdrop?.addEventListener("click", () => toggleCart(false));
+      renderCart();
+
+      checkoutForm?.addEventListener("submit", async (event) => { event.preventDefault(); if (!cart.length) { checkoutStatus.textContent = "Keranjang masih kosong."; return; } checkoutStatus.textContent = "Pesanan sedang diproses..."; const result = await window.dataSdk?.create({ order_id: `SVEED-${Date.now()}`, customer_name: document.getElementById("checkout-name").value, customer_email: document.getElementById("checkout-email").value, customer_phone: document.getElementById("checkout-phone").value, shipping_address: document.getElementById("checkout-address").value, items: cart.map((item) => item.name).join(", "), total_amount: cartTotal, created_at: new Date().toISOString() }); checkoutStatus.textContent = result?.isOk ? "Pesanan berhasil diterima! Kami akan menghubungi Anda." : "Pesanan belum tersimpan. Silakan coba lagi."; if (result?.isOk) { cart.length = 0; renderCart(); checkoutForm.reset(); } });
+
+      // Filters product cards using selected category and typed search text
+      function filterProducts() {
+        const phrase = searchInput ? searchInput.value.toLowerCase().trim() : "";
+        let visibleProducts = 0;
+
+        productItems.forEach((card) => {
+          const categories = card.dataset.category || "";
+          const categoryMatches = activeCategory === "all" || categories.includes(activeCategory);
+          const textMatches = !phrase || card.textContent.toLowerCase().includes(phrase);
+          const shouldShow = categoryMatches && textMatches;
+
+          card.classList.toggle("hidden", !shouldShow);
+
+          if (shouldShow) {
+            visibleProducts += 1;
+          }
+        });
+
+        if (noResults) {
+          noResults.classList.toggle("hidden", visibleProducts !== 0);
+        }
+      }
+
+      // Search updates product grid dynamically
+      if (searchInput) {
+        searchInput.addEventListener("input", filterProducts);
+        searchInput.addEventListener("keydown", (event) => {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            productsSection?.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+          if (event.key === "Escape") {
+            searchInput.value = "";
+            filterProducts();
+            searchInput.blur();
+          }
+        });
+      }
+
+      // Category menu filter buttons
+      document.querySelectorAll("[data-category]").forEach((button) => {
+        button.addEventListener("click", () => {
+          activeCategory = button.dataset.category || "all";
+
+          document.querySelectorAll(".nav-link").forEach((link) => {
+            link.classList.toggle("active", link.dataset.category === activeCategory);
+          });
+
+          filterProducts();
+
+          if (productsSection) {
+            productsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+
+          if (mobileMenu) {
+            mobileMenu.classList.remove("open");
+          }
+
+          if (menuToggle) {
+            menuToggle.setAttribute("aria-expanded", "false");
+          }
+        });
+      });
+
+      // Add-to-cart functionality
+      document.querySelectorAll(".add-button").forEach((button) => {
+        button.addEventListener("click", () => {
+          const card = button.closest(".product-card");
+          const name = card?.querySelector("h3")?.textContent.trim() || "Produk SVEED";
+          const priceText = card?.querySelector(".font-black")?.textContent.replace(/[^0-9]/g, "") || "0";
+          cart.push({ name, price: Number(priceText) });
+          renderCart();
+
+          const message = card ? card.querySelector(".added-message") : null;
+
+          if (message) {
+            message.classList.remove("hidden");
+
+            window.setTimeout(() => {
+              message.classList.add("hidden");
+            }, 1600);
+          }
+        });
+      });
+
+      // Switches front, back, and detail photos per product card
+      document.querySelectorAll(".product-card").forEach((card) => {
+        const productImages = {
+          front: card.querySelector('[data-template-id$="img-front"]'),
+          back: card.querySelector('[data-template-id$="img-back"]'),
+          detail: card.querySelector('[data-template-id$="img-detail"]')
+        };
+
+        card.querySelectorAll(".view-dot").forEach((dotButton) => {
+          dotButton.addEventListener("click", () => {
+            const selectedView = dotButton.dataset.view;
+
+            Object.entries(productImages).forEach(([viewName, image]) => {
+              if (image) {
+                image.classList.toggle("is-visible", viewName === selectedView);
+              }
+            });
+
+            card.querySelectorAll(".view-dot").forEach((dot) => {
+              dot.classList.toggle("active", dot === dotButton);
+            });
+          });
+        });
+      });
+
+      // Hero smooth scroll CTA
+      const shopCta = document.getElementById("shop-cta");
+
+      if (shopCta && productsSection) {
+        shopCta.addEventListener("click", () => {
+          productsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
+
+      // Mobile menu toggle
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener("click", () => {
+          const isOpen = mobileMenu.classList.toggle("open");
+          menuToggle.setAttribute("aria-expanded", String(isOpen));
+        });
+      }
+    });
+  </script>
+ </body>
+</html>
