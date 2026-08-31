@@ -291,13 +291,33 @@
       line-height: 0.8;
     }
 
-    .mobile-menu {
-      display: none;
-    }
+/* Mobile menu default hidden */
+.mobile-menu {
+  display: none !important;
+}
 
-    .mobile-menu.open {
-      display: flex;
-    }
+/* Saat Javascript menambahkan class .open */
+.mobile-menu.open {
+  display: flex !important;
+}
+
+@media (max-width: 900px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  .mobile-toggle {
+    display: inline-flex !important;
+  }
+}
+
+@media (min-width: 901px) {
+  .mobile-toggle {
+    display: none !important;
+  }
+  .mobile-menu.open {
+    display: none !important; /* Mencegah menu mobile bocor saat di-resize ke desktop */
+  }
+}
 
     @media (max-width: 900px) {
       .desktop-nav {
