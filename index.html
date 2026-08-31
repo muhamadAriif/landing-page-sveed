@@ -290,34 +290,33 @@
       letter-spacing: -0.12em;
       line-height: 0.8;
     }
+   .mobile-menu {
+      display: none !important;
+    }
 
-/* Mobile menu default hidden */
-.mobile-menu {
-  display: none !important;
-}
+    .mobile-menu.open {
+      display: flex !important;
+    }
 
-/* Saat Javascript menambahkan class .open */
-.mobile-menu.open {
-  display: flex !important;
-}
+    @media (max-width: 900px) {
+      .desktop-nav {
+        display: none !important;
+      }
 
-@media (max-width: 900px) {
-  .desktop-nav {
-    display: none !important;
-  }
-  .mobile-toggle {
-    display: inline-flex !important;
-  }
-}
+      .mobile-toggle {
+        display: inline-flex !important;
+      }
+    }
 
-@media (min-width: 901px) {
-  .mobile-toggle {
-    display: none !important;
-  }
-  .mobile-menu.open {
-    display: none !important; /* Mencegah menu mobile bocor saat di-resize ke desktop */
-  }
-}
+    @media (min-width: 901px) {
+      .mobile-toggle {
+        display: none !important;
+      }
+      .mobile-menu.open {
+        display: none !important;
+      }
+    }
+
 
     @media (max-width: 900px) {
       .desktop-nav {
@@ -904,11 +903,12 @@
 
       // Mobile menu toggle
       if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener("click", () => {
+        menuToggle.addEventListener("click", (e) => {
+          e.stopPropagation();
           const isOpen = mobileMenu.classList.toggle("open");
           menuToggle.setAttribute("aria-expanded", String(isOpen));
         });
-      }
+      };
     });
   </script>
  </body>
